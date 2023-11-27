@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body onload="loadPokemon()">
+    <div class="card-container">
+      <div class="card-header">
+        <div class="d-flex center space-between">
+          <h2 id="pokemon-name"></h2>
+          <span id="pokemon-id"></span>
+        </div>
+        <div id="type-container" class="d-flex"></div>
+        <div class="img-container">
+          <img id="pokemon-img" />
+        </div>
+      </div>
+      <div class="card-data">
+        <div class="card-data-header">
+          <a href="#">About</a>
+          <a href="#">Base Stats</a>
+        </div>
+        <div class="card-data-content"></div>
+      </div>
+    </div>
+  </body>
+</html>
