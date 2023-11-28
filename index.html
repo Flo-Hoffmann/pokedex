@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-
+    <link rel="icon" href="./img/pokeball.png" />
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
   </head>
-  <body onload="loadPokemon()">
-    <div class="card-container">
+  <body onload="init()">
+    <div id="large-card" class="card-container">
       <div class="card-header">
         <div class="d-flex center space-between">
           <h2 id="pokemon-name"></h2>
@@ -21,11 +21,60 @@
         </div>
       </div>
       <div class="card-data">
-        <div class="card-data-header">
+        <div class="card-data-menu">
           <a href="#">About</a>
           <a href="#">Base Stats</a>
         </div>
-        <div class="card-data-content"></div>
+        <div class="card-data-content">
+          <div id="card-data-about">
+            <table>
+              <tr>
+                <td>Species:</td>
+                <td id="pokemon-species"></td>
+              </tr>
+              <tr>
+                <td>Height:</td>
+                <td id="pokemon-height"></td>
+              </tr>
+              <tr>
+                <td>Weight:</td>
+                <td id="pokemon-weight"></td>
+              </tr>
+              <tr>
+                <td>Abilities:</td>
+                <td id="pokemon-abilities"></td>
+              </tr>
+            </table>
+          </div>
+          <div id="card-data-stats">
+            <table>
+              <tr>
+                <td>HP:</td>
+                <td id="pokemon-hp"></td>
+              </tr>
+              <tr>
+                <td>Attack:</td>
+                <td id="pokemon-attack"></td>
+              </tr>
+              <tr>
+                <td>Defense:</td>
+                <td id="pokemon-defense"></td>
+              </tr>
+              <tr>
+                <td>Special Attack:</td>
+                <td id="pokemon-special-attack"></td>
+              </tr>
+              <tr>
+                <td>Special Defense:</td>
+                <td id="pokemon-special-defense"></td>
+              </tr>
+              <tr>
+                <td>Speed:</td>
+                <td id="pokemon-speed"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </body>
