@@ -18,7 +18,7 @@ const bgColors = [
   { type: "Steel", color: "#B7B7CE" },
 ];
 
-let currentPokemon = "bulbasaur";
+let currentPokemon = "charizard";
 let currentPokemonData = [];
 let allPokemonData = [];
 
@@ -75,11 +75,11 @@ function renderPokemonCard() {
 
 function renderCardHeader() {
   let pokemonName = capitalize(currentPokemonData["name"]);
-  let pokemonId = "#" + currentPokemonData["id"];
+  let pokemonId = String(currentPokemonData['id']);
   let pokemonImg = currentPokemonData["img"];
 
   document.getElementById("pokemon-name").innerHTML = pokemonName;
-  document.getElementById("pokemon-id").innerHTML = pokemonId;
+  document.getElementById("pokemon-id").innerHTML = "Pokedex #" + pokemonId.padStart(3, "0");
   document.getElementById("pokemon-img").src = pokemonImg;
 
   setBgColor();
@@ -138,11 +138,15 @@ function renderTypes() {
   let types = currentPokemonData["types"];
 
   for (let i = 0; i < types.length; i++) {
-    let type = types[i];
+    let type = capitalize(types[i]);
+    let index = bgColors.findIndex((a) => a.type == type);
 
     document.getElementById("type-container").innerHTML += `
-      <span class="type">${type}</span>
+      <span id="type${i}" class="type">${type}</span>
     `;
+
+    document.getElementById(`type${i}`).style.backgroundColor =
+      bgColors[index]["color"];
   }
 }
 

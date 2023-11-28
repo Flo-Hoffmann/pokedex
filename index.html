@@ -11,11 +11,15 @@
   <body onload="init()">
     <div id="large-card" class="card-container">
       <div class="card-header">
-        <div class="d-flex center space-between">
-          <h2 id="pokemon-name"></h2>
-          <span id="pokemon-id"></span>
+        <div class="head">
+          <div class="d-flex center space-between">
+            <div>
+              <h2 id="pokemon-name"></h2>
+              <span id="pokemon-id"></span>
+            </div>
+            <div id="type-container" class="d-flex"></div>
+          </div>
         </div>
-        <div id="type-container" class="d-flex"></div>
         <div class="img-container">
           <img id="pokemon-img" />
         </div>
@@ -25,55 +29,53 @@
           <a href="#">About</a>
           <a href="#">Base Stats</a>
         </div>
-        <div class="card-data-content">
-          <div id="card-data-about">
-            <table>
-              <tr>
-                <td>Species:</td>
-                <td id="pokemon-species"></td>
-              </tr>
-              <tr>
-                <td>Height:</td>
-                <td id="pokemon-height"></td>
-              </tr>
-              <tr>
-                <td>Weight:</td>
-                <td id="pokemon-weight"></td>
-              </tr>
-              <tr>
-                <td>Abilities:</td>
-                <td id="pokemon-abilities"></td>
-              </tr>
-            </table>
-          </div>
-          <div id="card-data-stats">
-            <table>
-              <tr>
-                <td>HP:</td>
-                <td id="pokemon-hp"></td>
-              </tr>
-              <tr>
-                <td>Attack:</td>
-                <td id="pokemon-attack"></td>
-              </tr>
-              <tr>
-                <td>Defense:</td>
-                <td id="pokemon-defense"></td>
-              </tr>
-              <tr>
-                <td>Special Attack:</td>
-                <td id="pokemon-special-attack"></td>
-              </tr>
-              <tr>
-                <td>Special Defense:</td>
-                <td id="pokemon-special-defense"></td>
-              </tr>
-              <tr>
-                <td>Speed:</td>
-                <td id="pokemon-speed"></td>
-              </tr>
-            </table>
-          </div>
+        <div id="card-data-about" class="card-data-content">
+          <table>
+            <tr>
+              <td>Species:</td>
+              <td id="pokemon-species"></td>
+            </tr>
+            <tr>
+              <td>Height:</td>
+              <td id="pokemon-height"></td>
+            </tr>
+            <tr>
+              <td>Weight:</td>
+              <td id="pokemon-weight"></td>
+            </tr>
+            <tr>
+              <td>Abilities:</td>
+              <td id="pokemon-abilities"></td>
+            </tr>
+          </table>
+        </div>
+        <div id="card-data-stats" class="card-data-content d-none">
+          <table>
+            <tr>
+              <td>HP:</td>
+              <td id="pokemon-hp"></td>
+            </tr>
+            <tr>
+              <td>Attack:</td>
+              <td id="pokemon-attack"></td>
+            </tr>
+            <tr>
+              <td>Defense:</td>
+              <td id="pokemon-defense"></td>
+            </tr>
+            <tr>
+              <td>Special Attack:</td>
+              <td id="pokemon-special-attack"></td>
+            </tr>
+            <tr>
+              <td>Special Defense:</td>
+              <td id="pokemon-special-defense"></td>
+            </tr>
+            <tr>
+              <td>Speed:</td>
+              <td id="pokemon-speed"></td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>

@@ -16,6 +16,10 @@ body {
   display: flex;
 }
 
+.d-none {
+  display: none;
+}
+
 .center {
   justify-content: center;
   align-items: center;
@@ -27,16 +31,19 @@ body {
 
 .card-container {
   position: relative;
-  border-radius: 20px;
-  border: 1px solid rgba(0, 0, 0, 0.25);
   height: 100vh;
-  padding: 16px;
+  max-height: 1024px;
+  max-width: 600px;
+  padding: 16px 16px 0;
 }
 
 .card-header {
   position: relative;
+  background-image: url(./img/pokeball_bg.svg);
+  background-repeat: space;
+  background-size: 12%;
   color: white;
-  height: 30%;
+  height: 40vh;
   width: 100%;
 }
 
@@ -45,22 +52,36 @@ h2 {
   font-size: 2rem;
 }
 
+.head {
+  background-color: white;
+  color: black;
+  border-radius: 25px;
+  height: 80px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#type-container {
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 8px;
+}
 .type {
-  background-color: rgba(255, 255, 255, 0.25);
   padding: 4px 16px;
   border-radius: 50px;
-  margin-right: 8px;
 }
 
 .img-container {
   position: absolute;
-  bottom: -24px;
+  bottom: -32px;
   z-index: 3;
   width: 100%;
 }
 .img-container img {
   display: block;
-  height: 150px;
+  height: 35vh;
   margin: auto;
 }
 
@@ -69,16 +90,22 @@ h2 {
   bottom: 0;
   left: 0;
   background-color: white;
-  border-radius: 20px;
+  border-top-right-radius: 25px;
+  border-top-left-radius: 25px;
   width: 100%;
-  height: 70%;
-  padding: 32px 16px 16px;
+  height: 60vh;
+  padding: 16px 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .card-data-menu {
+  margin-top: 40px;
   display: flex;
   justify-content: space-around;
-  margin-bottom: 32px;
+  width: 100%;
 }
 
 .card-data-menu a {
@@ -88,5 +115,23 @@ h2 {
 }
 
 .card-data-content {
-  color: black;
+  position: absolute;
+  bottom: 10vh;
+  margin: 48px 0 0;
 }
+
+table {
+  height: 30vh;
+}
+
+td:first-child {
+  vertical-align: top;
+  color: lightgray;
+  font-weight: bold;
+  width: 80px;
+}
+
+td:last-child {
+  vertical-align: top;
+  overflow-wrap: break-word;
+  }
