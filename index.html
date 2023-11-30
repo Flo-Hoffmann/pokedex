@@ -1,83 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="content-language" content="en" />
+    <meta name="google" content="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
     <link rel="icon" href="./img/pokeball.png" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <script src="script.js"></script>
   </head>
   <body onload="init()">
-    <div id="large-card" class="card-container">
-      <div class="card-header">
-        <div class="head">
-          <div class="d-flex center space-between">
-            <div>
-              <h2 id="pokemon-name"></h2>
-              <span id="pokemon-id"></span>
+    <header class="d-flex center">
+        <form>
+          <input type="search" id="search-field" placeholder="enter pokemon or id">
+            <button class="search-btn">
+              <span class="material-symbols-outlined"> search </span>
+            </button>
+          </input>
+        </form>
+    </header>
+    <div id="board-container" class="board-container">
+      <div class="small-card">
+        <h3 id="small-card-name"> Pikachu</h3>
+        
+      </div>
+
+    </div>
+    <div id="large-card-bg" class="card-container-bg d-flex center d-none">
+      <div id="large-card" class="card-container">
+        <div class="card-header">
+          <div class="head">
+            <div class="d-flex center space-between">
+              <div>
+                <h2 id="pokemon-name"></h2>
+                <span id="pokemon-id"></span>
+              </div>
+              <div id="type-container" class="type-container"></div>
             </div>
-            <div id="type-container" class="d-flex"></div>
+          </div>
+          <div class="img-container">
+            <img id="pokemon-img" />
           </div>
         </div>
-        <div class="img-container">
-          <img id="pokemon-img" />
+        <div class="card-data">
+          <div class="card-data-menu">
+            <a id="menu-about" href="#">About</a>
+            <a id="menu-stats" href="#">Base Stats</a>
+          </div>
+          <div id="card-data-about" class="card-data-content">
+            <table class="about-table">
+              <tr>
+                <td>Species:</td>
+                <td id="pokemon-species"></td>
+              </tr>
+              <tr>
+                <td>Height:</td>
+                <td id="pokemon-height"></td>
+              </tr>
+              <tr>
+                <td>Weight:</td>
+                <td id="pokemon-weight"></td>
+              </tr>
+              <tr>
+                <td>Abilities:</td>
+                <td id="pokemon-abilities"></td>
+              </tr>
+            </table>
+          </div>
+          <div id="card-data-stats" class="card-data-content">
+            <table class="stats-table">
+              <tr>
+                <td>HP:</td>
+                <td id="pokemon-hp"></td>
+                <td>
+                  <svg id="stat-svg-0" class="stats-svg"></svg>
+                </td>
+              </tr>
+              <tr>
+                <td>Attack:</td>
+                <td id="pokemon-attack"></td>
+                <td>
+                  <svg id="stat-svg-1" class="stats-svg"></svg>
+                </td>
+              </tr>
+              <tr>
+                <td>Defense:</td>
+                <td id="pokemon-defense"></td>
+                <td>
+                  <svg id="stat-svg-2" class="stats-svg"></svg>
+                </td>
+              </tr>
+              <tr>
+                <td>Sp. Attack:</td>
+                <td id="pokemon-special-attack"></td>
+                <td>
+                  <svg id="stat-svg-3" class="stats-svg"></svg>
+                </td>
+              </tr>
+              <tr>
+                <td>Sp. Defense:</td>
+                <td id="pokemon-special-defense"></td>
+                <td>
+                  <svg id="stat-svg-4" class="stats-svg"></svg>
+                </td>
+              </tr>
+              <tr>
+                <td>Speed:</td>
+                <td id="pokemon-speed"></td>
+                <td>
+                  <svg id="stat-svg-5" class="stats-svg"></svg>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-data-controls">
+            <button id="back-btn" onclick="showPreviousPokemon()">
+              <span class="material-symbols-outlined"> arrow_back </span>
+            </button>
+            <button id="close-btn" onclick="hidePokemonCard()">
+              <span class="material-symbols-outlined"> close </span>
+            </button>
+            <button id="next-btn" onclick="showNextPokemon()">
+              <span class="material-symbols-outlined"> arrow_forward </span>
+            </button>
+          </div>
         </div>
       </div>
-      <div class="card-data">
-        <div class="card-data-menu">
-          <a href="#">About</a>
-          <a href="#">Base Stats</a>
-        </div>
-        <div id="card-data-about" class="card-data-content">
-          <table>
-            <tr>
-              <td>Species:</td>
-              <td id="pokemon-species"></td>
-            </tr>
-            <tr>
-              <td>Height:</td>
-              <td id="pokemon-height"></td>
-            </tr>
-            <tr>
-              <td>Weight:</td>
-              <td id="pokemon-weight"></td>
-            </tr>
-            <tr>
-              <td>Abilities:</td>
-              <td id="pokemon-abilities"></td>
-            </tr>
-          </table>
-        </div>
-        <div id="card-data-stats" class="card-data-content d-none">
-          <table>
-            <tr>
-              <td>HP:</td>
-              <td id="pokemon-hp"></td>
-            </tr>
-            <tr>
-              <td>Attack:</td>
-              <td id="pokemon-attack"></td>
-            </tr>
-            <tr>
-              <td>Defense:</td>
-              <td id="pokemon-defense"></td>
-            </tr>
-            <tr>
-              <td>Special Attack:</td>
-              <td id="pokemon-special-attack"></td>
-            </tr>
-            <tr>
-              <td>Special Defense:</td>
-              <td id="pokemon-special-defense"></td>
-            </tr>
-            <tr>
-              <td>Speed:</td>
-              <td id="pokemon-speed"></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
+   </div>
   </body>
 </html>
