@@ -16,19 +16,23 @@ const typeColors = [
   { type: "Dragon", color: "#6F35FC" },
   { type: "Dark", color: "#705746" },
   { type: "Steel", color: "#B7B7CE" },
+  { type: "Fairy", color: "#D685AD" },
 ];
 
 let currentPokemon = 1;
 let currentPokemonData = [];
-let numberOfPokemon = 20;
+let numberOfPokemon = 151;
 let allPokemonData = [];
 let scrollPos = "";
 
 async function init() {
   if (localStorage.getItem("pokemonData")) {
     allPokemonData = await loadFromLocalStorage("pokemonData");
-  } else await loadNumberOfPokemons();
-
+  } else {
+    document.getElementById("loading-icon").classList.remove("d-none");
+    await loadNumberOfPokemons();
+    document.getElementById("loading-icon").classList.add("d-none");
+  }
   renderPreviewCard();
 }
 
@@ -36,7 +40,6 @@ async function loadNumberOfPokemons() {
   let apiUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${numberOfPokemon}`;
   let apiResponse = await fetch(apiUrl);
   let apiResponseAsJson = await apiResponse.json();
-
   for (let i = 0; i < numberOfPokemon; i++) {
     let name = apiResponseAsJson["results"][i]["name"];
     await loadPokemonData(name);
@@ -292,14 +295,30 @@ function renderAbilities() {
   }
 }
 
+async function filterPokemon() {
+  let filter = lowerCase(document.getElementById("search-field").value);
+
+  for (let i = 0; i < allPokemonData.length; i++) {
+    let card = document.getElementById("small-card" + i);
+    let name = lowerCase(card.firstElementChild.firstElementChild.innerHTML);
+    let id = card.firstElementChild.lastElementChild.innerHTML;
+
+    if (name.indexOf(filter) > -1 || id.indexOf(filter) > -1) {
+      card.style.display = "";
+    } else {
+      card.style.display = "none";
+    }
+  }
+}
+
 function showNextPokemon() {
   if (currentPokemon < numberOfPokemon) currentPokemon++;
-  renderPokemonCard();
+  showPokemonCard(currentPokemon);
 }
 
 function showPreviousPokemon() {
   if (currentPokemon > 1) currentPokemon--;
-  renderPokemonCard();
+  showPokemonCard(currentPokemon);
 }
 
 function disableButtons() {

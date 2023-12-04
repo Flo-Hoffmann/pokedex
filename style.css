@@ -40,7 +40,8 @@ form {
 
 header input {
   padding-left: 16px;
-  width: 40vw;
+  padding-right: 64px;
+  width: 60vw;
   height: 40px;
   border: none;
   border-radius: 50px;
@@ -51,7 +52,7 @@ header input:focus {
   outline: none;
 }
 
-header button {
+.search-btn {
   position: absolute;
   right: 4px;
   height: 40px;
@@ -276,6 +277,36 @@ h2 {
 
 /* --- Large Card Design ends here --- */
 
+@media screen and (max-width: 1000px) {
+  header input {
+    width: 80vw;
+  }
+
+  .stats-svg {
+    width: 120px;
+  }
+
+  .stats-svg line {
+    transform: scaleX(0.5);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .card-container {
+    height: 100vh;
+    width: 100vw;
+    max-width: none;
+  }
+
+  .stats-svg {
+    width: 240px;
+  }
+
+  .stats-svg line {
+    transform: scaleX(1);
+  }
+}
+
 @media screen and (max-width: 500px) {
   .stats-svg {
     width: 120px;
@@ -286,14 +317,11 @@ h2 {
   }
 }
 
-@media screen and (max-width: 425px) {
-  .type-container {
-    flex-direction: column;
-    gap: 8px;
+@media screen and (max-width: 400px) {
+  body {
+    overflow: hidden;
   }
-}
 
-@media screen and (max-width: 360px) {
   .about-table tr td {
     padding: 8px 16px;
   }
@@ -301,10 +329,9 @@ h2 {
   .stats-table tr td {
     padding: 4px 8px;
   }
-}
 
-@media screen and (max-width: 320px) {
-  body {
-    overflow: hidden;
+  .type-container {
+    flex-direction: column;
+    gap: 8px;
   }
 }

@@ -8,6 +8,7 @@
     <title>Pokedex</title>
     <link rel="icon" href="./img/pokeball.png" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loading.css">
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
@@ -16,20 +17,20 @@
   </head>
   <body onload="init()">
     <header class="d-flex center">
-        <form>
-          <input type="search" id="search-field" placeholder="enter pokemon or id">
+        <form autocomplete="off">
+          <input type="search" id="search-field" onkeyup="filterPokemon()" placeholder="seach for pokemon name or id ...">
             <button class="search-btn">
               <span class="material-symbols-outlined"> search </span>
             </button>
           </input>
         </form>
     </header>
+    <div id="loading-icon" class="loading-icon d-none"><div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
     <div id="board-container" class="board-container">
       <div class="small-card">
-        <h3 id="small-card-name"> Pikachu</h3>
-        
+        <h3 id="small-card-name"> Pikachu</h3>     
       </div>
-
     </div>
     <div id="large-card-bg" class="card-container-bg d-flex center d-none">
       <div id="large-card" class="card-container">
