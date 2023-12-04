@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: rgba(250, 250, 250);
+  background-color: rgba(161, 161, 161, 0.3);
   position: relative;
 }
 
@@ -45,7 +45,7 @@ header input {
   height: 40px;
   border: none;
   border-radius: 50px;
-  background-color: lightgray;
+  background-color: white;
 }
 
 header input:focus {

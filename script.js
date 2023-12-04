@@ -26,7 +26,7 @@ let allPokemonData = [];
 let scrollPos = "";
 
 async function init() {
-  if (localStorage.getItem("pokemonData")) {
+  if (localStorage.getItem("pokemonData") && checkLocalStorageDate()) {
     allPokemonData = await loadFromLocalStorage("pokemonData");
   } else {
     document.getElementById("loading-icon").classList.remove("d-none");
@@ -36,17 +36,28 @@ async function init() {
   renderPreviewCard();
 }
 
+function checkLocalStorageDate() {
+  let dataSetDate = JSON.parse(
+    localStorage.getItem("pokemonData")
+  ).timestamp.substring(0, 10);
+
+  let today = formatDate(new Date());
+
+  if (today == dataSetDate) return true;
+}
+
 async function loadNumberOfPokemons() {
   let apiUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${numberOfPokemon}`;
   let apiResponse = await fetch(apiUrl);
   let apiResponseAsJson = await apiResponse.json();
+
   for (let i = 0; i < numberOfPokemon; i++) {
     let name = apiResponseAsJson["results"][i]["name"];
     await loadPokemonData(name);
   }
 
   await saveToLocalStorage("pokemonData", allPokemonData);
-  console.log(allPokemonData);
+  console.log("Loaded to local Storage: ", allPokemonData);
 }
 
 async function loadPokemonData(name) {
@@ -338,10 +349,24 @@ function lowerCase(word) {
   return word.charAt(0).toLowerCase() + word.slice(1);
 }
 
+function formatDate(date) {
+  var d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+}
+
 function saveToLocalStorage(key, array) {
-  localStorage.setItem(key, JSON.stringify(array));
+  let object = { value: array, timestamp: new Date() };
+  localStorage.setItem(key, JSON.stringify(object));
 }
 
 function loadFromLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+  let object = JSON.parse(localStorage.getItem(key));
+  return object.value;
 }
