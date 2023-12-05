@@ -37,13 +37,15 @@ async function init() {
 }
 
 function checkLocalStorageDate() {
-  let dataSetDate = JSON.parse(
-    localStorage.getItem("pokemonData")
-  ).timestamp.substring(0, 10);
+  if (localStorage.getItem("pokemonData")) {
+    let dataSetDate = JSON.parse(
+      localStorage.getItem("pokemonData")
+    ).timestamp.substring(0, 10);
 
-  let today = formatDate(new Date());
+    let today = formatDate(new Date());
 
-  if (today == dataSetDate) return true;
+    if (today == dataSetDate) return true;
+  }
 }
 
 async function loadNumberOfPokemons() {
@@ -114,7 +116,7 @@ function showPokemonCard(pokemonId) {
   currentPokemonData = allPokemonData[index];
 
   renderCardHeader();
-  switchToCardStats();
+  switchToCardAbout();
   disableButtons();
 
   document.getElementById("large-card-bg").classList.remove("d-none");

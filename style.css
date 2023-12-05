@@ -10,7 +10,7 @@ body {
   margin: 0;
   padding: 0;
   border: none;
-  background-color: rgba(161, 161, 161, 0.3);
+  background-color: rgba(250, 250, 250);
   position: relative;
 }
 
@@ -46,6 +46,7 @@ header input {
   border: none;
   border-radius: 50px;
   background-color: white;
+  border: 1px solid black;
 }
 
 header input:focus {
@@ -138,7 +139,7 @@ header input:focus {
   background-repeat: space;
   background-size: 10%;
   color: white;
-  height: 40vh;
+  height: 50%;
   width: 100%;
 }
 
@@ -192,7 +193,7 @@ h2 {
   border-bottom-left-radius: 37.5px;
   border-bottom-right-radius: 37.5px;
   width: 100%;
-  height: 50vh;
+  height: 50%;
   padding: 16px 0;
 
   display: flex;
@@ -294,8 +295,14 @@ h2 {
 @media screen and (max-width: 800px) {
   .card-container {
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     max-width: none;
+    border-radius: 0px;
+  }
+
+  .card-data {
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
   }
 
   .stats-svg {
@@ -318,10 +325,6 @@ h2 {
 }
 
 @media screen and (max-width: 400px) {
-  body {
-    overflow: hidden;
-  }
-
   .about-table tr td {
     padding: 8px 16px;
   }
